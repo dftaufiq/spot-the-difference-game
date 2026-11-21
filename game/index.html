@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lanternlight — Spot the Difference</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8F%AE%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <header id="hud" class="hidden">
+    <div class="hud-row">
+      <span id="hud-level">Level 1</span>
+      <span id="hud-found">0 / 5 found</span>
+      <span id="hud-left">5 left</span>
+      <span id="hud-time">2:30</span>
+      <span id="hud-score">0 pts</span>
+      <span id="hud-combo"></span>
+    </div>
+    <div id="time-track"><div id="time-bar"></div></div>
+    <div class="hud-row hud-actions">
+      <button id="btn-hint" type="button">💡 Hint (3)</button>
+      <button id="btn-pause" type="button">⏸ Pause</button>
+      <button id="btn-mute" type="button">🔊 Sound</button>
+      <span class="hud-keys">Arrows move · Enter clicks · H hint · M mute · P pause</span>
+    </div>
+  </header>
+
+  <section id="panels" class="dimmed" aria-label="Spot the difference panels">
+    <figure class="panel">
+      <figcaption>Left — original</figcaption>
+      <canvas id="panel-left" width="640" height="420"></canvas>
+    </figure>
+    <figure class="panel">
+      <figcaption>Right — find the changes</figcaption>
+      <canvas id="panel-right" width="640" height="420"></canvas>
+    </figure>
+  </section>
+
+  <div id="toast" class="hidden" role="status"></div>
+
+  <div id="overlay-menu" class="overlay">
+    <h1>🏮 Lanternlight</h1>
+    <p class="tagline">Spot the Difference — three hand-drawn scenes, twenty-one hidden changes.</p>
+    <p class="howto">Two pictures sit side by side. They look the same — they are not.
+      Click a difference on either picture to mark it. Wrong clicks cost points.
+      Beat the clock, keep your combo alive, and spend hints wisely.</p>
+    <div id="level-list"></div>
+    <p class="keys">Mouse or touch to click · Arrow keys + Enter to play from the keyboard · H for a hint</p>
+  </div>
+
+  <div id="overlay-end" class="overlay hidden">
+    <h2 id="end-title">Level cleared!</h2>
+    <p id="end-stars" class="stars">★★★</p>
+    <p id="end-stats"></p>
+    <div class="overlay-buttons">
+      <button id="btn-next" type="button">Next level →</button>
+      <button id="btn-replay" type="button">Replay level</button>
+      <button id="btn-end-menu" type="button">Menu</button>
+    </div>
+  </div>
+
+  <div id="overlay-win" class="overlay hidden">
+    <h2>🏆 You found them all!</h2>
+    <p class="tagline">Every difference in every scene — the lanterns shine a little brighter tonight.</p>
+    <p id="win-score" class="stars"></p>
+    <div class="overlay-buttons">
+      <button id="btn-again" type="button">Play again</button>
+      <button id="btn-win-menu" type="button">Menu</button>
+    </div>
+  </div>
+
+  <div id="overlay-paused" class="overlay hidden">
+    <h2>Paused</h2>
+    <p class="tagline">Take a breath. The differences are not going anywhere.</p>
+    <div class="overlay-buttons">
+      <button id="btn-resume" type="button">Resume</button>
+      <button id="btn-quit" type="button">Quit to menu</button>
+    </div>
+  </div>
+</main>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
